@@ -15,3 +15,6 @@ https://wger.de/en/software/api?ref=apilist.fun
 
 [FINAL RESULT OF CAPSTONE] 
 For the final result of my capstone, I utilized much of the similar work I've been able to do in the curriculum as well as some of the coding that has been provided through the learning videos. For example, testing models and routes/pathways in similar fashion to what is seen in the Testing videos of the curriculum as well as in the practice assessments. I've found that through reviewing my past work, this allowed me to work on a simple and straightforward application piece-by-piece.
+
+The link can be found here, "Workout Platform" https://github.com/aovalles2711/Capstone.git.
+The website allows a user to create their own workout plan via the database provided and provides functionality for the user to join groups as well.
