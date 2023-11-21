@@ -1,0 +1,261 @@
+/* navbar */
+.navbar {
+    background: linear-gradient(135deg, #E0A3D2, #9b91c7);
+    height: 66px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 9999;
+}
+
+.navbar a {
+    color: #4e585e;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.navbar a:hover header{
+    color: #1c94e0;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-family: 'Marker Felt', cursive;
+    font-weight: 900;
+    font-size: 66px;
+}
+
+.navbbar-brand > img {
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    width: 20px;
+    border-radius: 2px;
+}
+
+.navbar-brand span {
+    display: none;
+}
+
+.nav > li > a > img {
+    width: 32px;
+    border-radius: 32px;
+}
+
+ul.nav.navbar-nav li {
+    margin: 0 0.5rem;
+    display: flex;
+}
+
+nav form.navbar-form, .navbar-form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-form .form-control {
+    margin-right: 5px; 
+}
+
+.navbar-form .btn {
+    margin-left: 5px;
+}
+
+.onboarding > .navbar {
+    background-image: url("/static/imaes/nav-bg.png");
+}
+
+.onboarding .navbar-header {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.onboarding .navbar-brand {
+    margin: 0;
+}
+
+.onboarding .navbar-brand span {
+    display: none;
+}
+
+.onboarding .nav.navbar-nav.navbar-right {
+    position: absolute;
+    right: 16px;
+}
+
+.onboarding > .navbar a {
+    color: #fff
+}
+
+.onboarding > .navbar form.navbar-form {
+    display: none;
+}
+
+.onboarding {
+    background-color:  #fff;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 18px;
+    }
+    .full-width .user-stats .stat {
+        display: none;
+    }
+}
+
+.user-location {
+    color: #657786
+}
+
+/* home.html */
+
+.profile-icon {
+    margin-right: 110px;
+    width: 150px;
+    height: 150px;
+    float: right;
+}
+
+.welcome-message {
+    font-size: 48px;
+    font-weight: bold;
+    color: #5984b0;
+    ,argin-bottom: 20px;
+    text-align: right;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.content-box a {
+    word-wrap: break-word;
+}
+
+body {
+    background-color: rgba(211, 211, 211, 0.433) !important;
+}
+
+.card.custom-card {
+    background-color: rgba(211, 211, 211, 0.5) !important;
+}
+
+.card.custom.card.two {
+    background-color: rgba(211, 211, 211, 0.5) !important;
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+.card.custom.card.three {
+    background-color: rgba(211, 211, 211, 0.5) !important;
+    margin-right: 800px;
+}
+
+.card.custom-card-four {
+    background-color: rgba(211, 211, 211, 0.5) !important;
+    margin-left: 800px;
+    position: relative;
+    top: -80px;
+}
+
+#searchResults li {
+    text-align: left;
+}
+
+.friends-list {
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    .content-box{
+        background: linear-gradient(135deg, #E0A3D2, #9B91C7);
+        border: 3px solid #5984b0;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #5984b0 !important;
+        color: #655c5c;
+    }
+
+    .btn-danger {
+        background-color: #1b1a1a;
+        color: #fff;
+    }
+
+    header {
+        background: linear-gradient(135deg, #b3a0b1, #5d5d60);
+        color: #4e585e;
+        padding: 20px;
+        margin: 0 auto;
+        transform: scale(0.9);
+        animation: slideIn 0.5s ease forwards;
+        max-width: 400% !important;
+    }
+
+    .header h1 {
+        font-size: 36px;
+    }
+
+    .header p {
+        font-size: 18px;
+    }
+
+    @keyframes slideIn {
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .welcome-message {
+        font-size: 48px;
+        font-weight: bold;
+        color: #5984b0;
+        margin-bottom: 20px;
+        text-align: right;
+        text-shadow:
+            -1px -1px 0 #000, 
+            1px -1px 0 #000,  
+            -1px 1px 0 #000,  
+            1px 1px 0 #000;   
+    }
+
+    .profile-icon {
+        text-align: left;
+    }
+
+    .user-location {
+        font-size: 36px;
+        color: #4d5053;
+    }
+
+    .btn-dark-grey {
+        background-color: #4d5053;
+        color: #fff
+    }
+
+    .bubbly-text {
+        display: inline-block;
+        font-family: 'Marker Felt', cursive;
+        font-weight: 500;
+        font-size: 90px;
+        background-image: linear-gradient(135deg, #2e2e30, #8f85b9);
+        background-clip: text;
+        color: transparent;
+        animation: bubble 0.3s infinite alterante;
+    }
+
+    @keyframes bubble {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translate(-5px);
+        }
+    }
+}
