@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Edit Workout Plan from {{ date }} (#{{ id }})</h2>
+    <form method="POST" id ="edit-form">
+        {{ form.hidden_tag() }} <!-- hidden fields -->
+        <div class="form-group">
+            {{ form.entry.label(class="form-label") }}
+            {{ form.entry(class="form-control", rows="4") }}
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-entry">Submit</button>
+    </form>
+
+    <form method="POST" id="delete-form" action="{{ url_for('delete_workout_entry', id=entry.id) }}">
+        {{ form.hidden_tag() }}
+        <input type="hidden" name="id" value="{{ id }}">
+        <button type="submit" class="btn btn-danger" id="delete-entry">Delete Entry</button>
+    </form>
+
+    <a href="{{ url_for('exercise', date=form.date.data) }}">Cancel</a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButton = document.getElementById('delete-entry');
+        const deleteForm = document.getElementById('delete-form');
+        const submitButton = document.getElementById('submit-entry');
+
+        deleteButton.addEventListener('click', function(event) {
+            event.preventDefault(); // prevent default form submission
+            const confirmation = confirm("Are you sure you want to delete this entry?");
+            if (confirmation) {
+                // Handle delete form
+                deleteForm.submit();
+            }
+        });
+
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault(); // prevent default form submission
+            const confirmation = confirm("Are you sure you want to update this entry?");
+            if (confirmation) {
+                document.getElementById('edit-form').submit();
+            }
+        });
+    });
+</script>
+
+{% endblock %}

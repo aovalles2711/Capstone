@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Home Page</title>
+
+<header class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="bubbly-text">Training Platform</h1>
+            <a href="{{ url_for('edit_profile') }}" class="btn btn-primary">Edit Profile</a>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h1 class="welcome-message">Welcome, {{ user.userame }}!</h1>
+            <div class="form-group">
+                {% if user.image_url %}
+                    <img src="{{ url_for('get_image', user_id=user.user_id) }}" alt="User Image">
+                {% else %}
+                    <img src="{{ url_for('static', filename='uploads/example.png') }}" alt="Default Profile Picture" class="profile-icon">
+                {% end if %}
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="content-box">
+                <h3>Groups & Your Friends (Athletes)</h3>
+                <a href="{{ url_for('friends_groups') }}" class="btn btn-primary">Friends & Groups</a>
+                <ul>
+                    <div class="card custom-card-three">
+                        <h4>My Groups:</h4>
+                        {% for group in user_groups %}
+                        <div class="group" data-group-id="{{ group.group_id }}">
+                            <h5><a href="{{ url_for('group', group_id=group.group_id) }}" class="group-link">{{ group.group_name }}</a></h5>
+                            <button class="btn-dark-grey leave-group-button" data-group-id="{{ group.group_id }}">Leave Group</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+                <ul>
+                    <div class="card custom-card-four">
+                        <h4>My Friends:</h4>
+                        {% for friend in g.user.friends %}
+                        <a href="{{ url_for('friends_Profile', user_id=friend.user_id) }}>"{{ friend.username }}</a>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        <script>
+            $(document).ready(function(){
+                $('.leave-group-button').click(function(){
+                    let groupId = $(this).data('group-id');
+                
+                    $.post('/leave_group/' + groupId, function(data){
+                        if (data.success){
+                        
+                            $('.group[data-group-id="${groupId}"]').remove();
+                        }
+                    });
+                });
+            });
+        </script>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row justify-content-md-center">
+        <div class=col-md-4>
+            <h2 class="join-message">Edit Your Profile</h2>
+            <form method="POST" action="{{ url_for('edit_profile') }}" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <div class="form-group">
+                    {{ field.label(class="form-label") }}
+                
+                    {% if field.name == 'image_url' %}
+                    <label for="profile_picture">Choose Profile Picture</label>
+                    <input type="file" name="image_url" id="profile_picture" accept="image/*">
+                
+                    {% elif field.name != 'current password' %}
+                        {{ field(placeholder=field.label.text, class="form-control", value=user[field.name]) }}
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <div class="form-group">
+                <p>To confirm changes, enter your current password:</p>
+                {{ form.curret_password.label(class="form-label") }}
+                {{ form.current_password(placeholder="Enter your password", class="form-control") }}
+                {% for error in form.current_password.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="edit-btn-area">
+                <button class="bt btn-success">Edit this user</button>
+                <a href="{{ url_for('homepage') }}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

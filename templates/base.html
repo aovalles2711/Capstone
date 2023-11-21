@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Training Platform</title>
+
+    <!-- CSS and JS -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+
+    <script src="https://unpkg.com/jquery"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+  
+   <!-- Add FullCalendar resource links here -->
+   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.js"></script>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+    <nav class="navbar navbar-expand">
+      <div class="container-fluid">
+  
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand">
+            <!-- <img src="/static/images/your-logo.png" alt="logo"> -->
+            <h2>Exercise</h2> 
+          </a>
+        </div>
+        <ul class="nav navbar-nav ml-auto">
+          <!-- {% if request.endpoint != None %}
+            <li>
+              <form class="form-inline my-2 my-lg-0" action="/search">
+                <div class="input-group">
+                  <input name="q" class="form-control" placeholder="Search" id="search">
+                  <div class="input-group-append">
+                    <button class="btn btn-default my-2 my-sm-0" type="submit">
+                      <span class="fa fa-search"></span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </li>
+          {% endif %} -->
+          {% if not g.user %}
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/login">Log In</a></li>
+          {% else %}
+            <!-- Display user's profile picture (tiny icon) -->
+     
+            <!-- Display user's name -->
+            <li><a href="/">Hi {{ g.user.username }}</a></li>
+            <li><a href="/all">All Exercises</a></li>
+            <li><a href="/muscles">Specific Muscles</a></li>
+            <li><a href="/experiences">Experience Levels</a></li>
+            <li><a href="/mechanics">Movements</a></li>
+            <li><a href="/forces">Movement Direction</a></li>
+            <li><a href="/equipment">Equipment Needed</a></li>
+            <li><a href="/logout">Log Out</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+      {% block content %}
+      {% endblock %}
+    </div>
+    <!-- <script src="/static/main.js"></script> -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
+  </html>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Friend's Profile</title>
+<div class="container mt-4">
+    <div class="content-box">
+        <div class="row">
+            <div clas="col-md-6">
+                <h1 class="welcome-message">{{ user.username }}'s Profile:</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="form-group">
+                    {% if image_url %}
+                    <img src="{{ image_url }}" alt="Profile Picture" class="profile-icon img-fluid">{% else %}
+                    
+                    <img src="{{ url_for('static', filename='uploads/example.png') }}" alt="Default Profile Picture" class="profile-icon img-fluid">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="col-md-6">
+            {% if user.bio %}
+                <div class="content-box">
+                    <h2>Bio:</h2>
+                    <p>{{ user.bio }}</p>
+                </div>
+            {% endif %}
+
+            <div class="content-box">
+                <h2>Groups:</h2>
+                <ul>
+                    {% for group in user_groups %}
+                        <ul>{{ group.group_name }}</ul>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <h2>Friends:</h2>
+                <ul>
+                    {% for friend in friends %}
+                    <ul><a href="{{ url_for('friends_profile', user_id=friend.user_id) }}">{{ friend.username }}</a></ul>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ url_for('homepage') }}" class="btn btn-primary mt-3">Back to Homepage</a>
+</div>
+{% endblock %}
